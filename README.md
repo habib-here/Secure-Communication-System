@@ -70,3 +70,36 @@ The system includes a user authentication process. Before exchanging any data, u
 
 The project consists of three main files, each serving a specific role:
 
+
+### **File Descriptions**:
+
+- **AES.py**: Contains the implementation of AES encryption and decryption functions.
+- **client.py**: Represents the client-side of the secure communication system. The client establishes a connection with the server, performs a Diffie-Hellman key exchange, encrypts the message, and sends it to the server.
+- **server.py**: Represents the server-side of the secure communication system. The server listens for client connections, completes the Diffie-Hellman key exchange, and decrypts the received messages.
+
+---
+
+## Detailed Functionality
+
+This section describes the detailed functionality of each component in the system.
+
+### AES Encryption
+
+The file `AES.py` provides the core AES encryption and decryption functionality. It handles the generation of the encryption key, encryption of the message using the CBC (Cipher Block Chaining) mode, and decryption of the encrypted message.
+
+#### Key Functions:
+- **Key Setup (`setter`)**: Prepares the key used in AES encryption. If the key is less than 16 bytes, it pads the key; if the key is longer, it truncates it to 16 bytes.
+  
+- **Encryption (`encrypt`)**:
+  - Takes plaintext and key as input.
+  - Pads the plaintext to match the AES block size.
+  - Encrypts the message using AES in CBC mode and returns the ciphertext and initialization vector (IV).
+
+- **Decryption (`decrypt`)**:
+  - Takes the ciphertext, key, and IV as input.
+  - Decrypts the ciphertext using AES in CBC mode and returns the plaintext.
+
+#### AES Example:
+```python
+cipher_text, iv = encrypt("My secret data", "mysecretkey")
+plain_text = decrypt(cipher_text, "mysecretkey", iv)
