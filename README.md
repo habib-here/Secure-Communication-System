@@ -12,11 +12,11 @@ This project implements a secure communication system using cryptographic method
 ## File Descriptions
 
 ### 1. `AES.py`
-This module provides functions to encrypt and decrypt messages using the AES encryption standard in both **ECB (Electronic Codebook)** and **CBC (Cipher Block Chaining)** modes.
+This module provides functions to encrypt and decrypt messages using the AES encryption standard in both **CBC (Cipher Block Chaining)** modes.
 
-- **Key Management**: The `setter()` and `setKey()` functions handle key formatting to ensure they meet the 16-byte AES requirement.
-- **Encryption**: The `encrypt()` and `encrypt_message()` functions use AES to encrypt a given message.
-- **Decryption**: The `decrypt()` and `decrypt_message()` functions decrypt AES-encrypted messages back to plaintext.
+- **Key Management**: The `setter()` function handle key formatting to ensure they meet the 16-byte AES requirement.
+- **Encryption**: The `encrypt()` function use AES to encrypt a given message.
+- **Decryption**: The `decrypt()` function decrypt AES-encrypted messages back to plaintext.
 
 ### 2. `client.py`
 This file implements the client-side of the communication system. It sends encrypted messages to the server and receives encrypted responses.
