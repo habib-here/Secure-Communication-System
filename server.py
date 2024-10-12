@@ -4,7 +4,6 @@ import socket
 import AES
 import csv
 import os
-import threading
 
 def main():
     print("\n\t>>>>>>>>>> XYZ University Chat Server <<<<<<<<<<\n\n")
@@ -46,13 +45,9 @@ def handle_client(client_socket):
     while True:
         # receive message from the client
         buf = client_socket.recv(256)
-        #print("recv buf_s", buf)
         client_socket.send("buf_s".encode('utf-8'))
         iv = client_socket.recv(256)
-        #print("recv_iv_s", iv)
         buf = AES.decrypt(buf, shared_key, iv).decode('utf-8')
-        #print("dec:", buf)
-        #print("data printed")
 
         # register check
         if buf.startswith("REGISTER"):
@@ -109,12 +104,7 @@ def handle_client(client_socket):
             response = Rot13(response)
             if response != "":
                 break
-        '''
-        if response == "exit" or "rkvg" or buf == "":
-            print("Server going down...")
-            break
-        '''
-
+                
         client_socket.send(response.encode('utf-8'))
 
     client_socket.close()
@@ -158,21 +148,6 @@ def userExists(user):
 def authentication(creds):
     # cred = ["LOGIN", {id}, {password} ]
     # row  = [{name}, {email}, {password i.e hash}]
-    #print("Recieved From Client: ", creds)
-    data = retrieve()
-    '''
-    if data:
-        for row in data:
-            # hashing and salting
-            temp = creds[2] + row[0]
-            print(temp)
-            temp = hashlib.sha256(temp.encode('utf-8')).hexdigest()
-            print(temp)
-
-            if (row[0] == creds[1] or row[1] == creds[1]) and row[2] == temp:
-                return True
-    return False
-    '''
     if data:
         for row in data:
             if row[0] == creds[1] or row[1] == creds[1]:
@@ -180,7 +155,6 @@ def authentication(creds):
                 # now salt recived pass w.r.t user
                 temp = creds[2] + row[0]
                 temp = hashlib.sha256(temp.encode('utf-8')).hexdigest()
-                #print(temp)
                 if row[2] == temp:
                     return True
     return False
