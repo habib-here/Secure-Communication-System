@@ -37,6 +37,7 @@ This file implements the server-side of the communication system. It receives en
 ### Requirements
 - Python 3.x
 - `pycryptodome` for AES encryption:
+- 
   ```bash
   pip install pycryptodome
   ```
