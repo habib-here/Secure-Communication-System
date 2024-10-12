@@ -4,7 +4,7 @@
 This project implements a secure communication system using cryptographic methods and a client-server architecture. The system ensures data confidentiality and authentication through encryption and secure key exchange protocols.
 
 ## Features
-- **AES Encryption (CBC/ECB Modes)**: Data is encrypted using the AES (Advanced Encryption Standard) cipher, providing secure transmission of messages between the client and server.
+- **AES Encryption (CBC Mode)**: Data is encrypted using the AES (Advanced Encryption Standard) cipher, providing secure transmission of messages between the client and server.
 - **Diffie-Hellman Key Exchange**: A method to securely exchange cryptographic keys over a public channel.
 - **ROT13 Encryption**: Provides an additional encryption option using the ROT13 cipher.
 - **User Authentication**: Verifies client credentials based on hashed passwords and salts.
